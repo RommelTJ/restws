@@ -9,8 +9,12 @@
 		<jaxrs:serviceBeans>
 			<ref bean="serviceBean" />
 		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
 	</jaxrs:server>
 
 	<bean id="serviceBean" class="com.rommelrico.trainings.jaxrs.PatientServiceImpl"></bean>
 
+	<bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider" />
 </beans>
