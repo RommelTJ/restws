@@ -3,7 +3,7 @@ function doGet(){
     	type: "GET",
     	 contentType: "application/json; charset=utf-8",
          dataType: "json",
-        url: "http://localhost:8080/restws/services/patientservice/patients/"+$('#patientID').val()
+        url: "http://localhost:8080/services/patientservice/patients/"+$('#patientID').val()
     }).then(function(data) {
        $('#patientID').val(data.id);
        $('#patientName').val(data.name);
@@ -16,7 +16,7 @@ $.ajax({
 	 contentType: "application/json; charset=utf-8",
      dataType: "json",
      data: JSON.stringify({name:$('#patientName').val()}),
-    url: "http://localhost:8080/restws/services/patientservice/patients"
+    url: "http://localhost:8080/services/patientservice/patients"
     	
 	}).then(function(data) {
 		$('#patientID').val(data.id);
@@ -31,7 +31,7 @@ function doDelete(){
     	type: "DELETE",
     	 contentType: "application/json; charset=utf-8",
          dataType: "json",
-        url: "http://localhost:8080/restws/services/patientservice/patients/"+$('#patientID').val()
+        url: "http://localhost:8080/services/patientservice/patients/"+$('#patientID').val()
     }).then(function(data) {
        alert('Patient Deleted');
     });
