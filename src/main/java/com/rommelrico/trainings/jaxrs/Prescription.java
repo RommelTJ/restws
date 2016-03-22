@@ -1,5 +1,8 @@
 package com.rommelrico.trainings.jaxrs;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +11,7 @@ import java.util.Map;
 public class Prescription {
 	private long id;
 	private String description;
-	private Map<Long, Medicine> prescriptions = new HashMap<Long, Medicine>();
+	private Map<Long, Medicine> medicines = new HashMap<Long, Medicine>();
 
 	public Prescription() {
 		init();
@@ -30,9 +33,11 @@ public class Prescription {
 		this.description = description;
 	}
 
-	public Medicine getMedicine(int medicineid) {
+	@GET
+	@Path("/medicines/{id}")
+	public Medicine getMedicine(@PathParam("id") String medicineid) {
 		System.out.println("----invoking getMedicine with id: " + medicineid);
-		Medicine medicine = prescriptions.get(new Long(medicineid));
+		Medicine medicine = medicines.get(new Long(medicineid));
 		return medicine;
 	}
 
@@ -40,6 +45,6 @@ public class Prescription {
 		Medicine medicine = new Medicine();
 		medicine.setId(323);
 		medicine.setDescription("Medicine 323");
-		prescriptions.put(medicine.getId(), medicine);
+		medicines.put(medicine.getId(), medicine);
 	}
 }
